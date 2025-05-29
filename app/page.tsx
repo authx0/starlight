@@ -160,17 +160,17 @@ function Canvas() {
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
-    // Aurora configuration
+    // Starlights configuration
     const points: Point3D[] = [];
     const particleCount = 600; // More particles for the globe effect
     const radius = Math.min(canvas.width, canvas.height) * 0.3; // Globe radius
     
     const colors = [
-      'rgba(124, 252, 0, 0.7)',  // LimeGreen
-      'rgba(0, 191, 255, 0.7)',  // DeepSkyBlue
-      'rgba(238, 130, 238, 0.7)', // Violet
-      'rgba(255, 105, 180, 0.7)', // HotPink
-      'rgba(135, 206, 250, 0.7)', // LightSkyBlue
+      'rgba(255, 255, 255, 0.9)',  // Bright white
+      'rgba(255, 255, 255, 0.8)',  // Slightly transparent white
+      'rgba(255, 255, 255, 0.7)',  // More transparent white
+      'rgba(255, 255, 255, 0.6)',  // Even more transparent white
+      'rgba(255, 255, 255, 0.5)',  // Most transparent white
     ];
     
     // Initialize points in a sphere shape
@@ -300,7 +300,7 @@ function Canvas() {
       // Sort points by z-coordinate for proper depth rendering (painter's algorithm)
       const sortedPoints = [...points].sort((a, b) => b.z - a.z);
       
-      // Draw aurora particles with size based on z-depth
+      // Draw starlights particles with size based on z-depth
       sortedPoints.forEach(point => {
         const projected = point.project(centerX, centerY, interactionState.zoom);
         
@@ -332,7 +332,7 @@ function Canvas() {
         }
       });
       
-      // Draw aurora connections for points close to each other
+      // Draw starlights connections for points close to each other
       ctx.globalAlpha = 0.3;
       sortedPoints.forEach((p1, i) => {
         for (let j = i + 1; j < Math.min(i + 5, sortedPoints.length); j++) {
